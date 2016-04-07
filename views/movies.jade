@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= movie
+  p Welcome to #{movie}
+
+  p.info #{movieInfo}
+
+  form(action = '/movies/' method= 'POST')
+    input.search(type='text' placeholder="Search for movies by title." 
+    name ='titleName')
+    input.button(type='submit')
