@@ -1,10 +1,12 @@
 extends layout
 
 block content
-  h1= movie
-  p Welcome to #{movie}
+  .container-fluid
+    img.background(src= movieInfo.Image)
 
-  p.info #{movieInfo}
+  h1 #{movieInfo.Title}
+  p #{movieInfo.Plot}
+
 
   form(action = '/movies/' method= 'POST')
     input.search(type='text' placeholder="Search for movies by title." 
