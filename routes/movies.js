@@ -17,21 +17,24 @@ app.use(bodyParser.json());
 function getMovieImage(title, callback){
   // takes the title of a movie, searches the bing api for   related image
   // and adds it to an object holding movie info
-  bing.images(title + 'movie', {
-    top: 2,
+  movieInfo.Image = [];
+  bing.images(title + ' movie', {
+    top: 4,
     imageFilters: {
       aspect: 'wide'
     },
     face: 'other'
   }, function(error, res, body){
-    movieInfo.Image = body.d.results[0].MediaUrl;
+    body.d.results.forEach(function(movie){
+      movieInfo.Image.push(movie.MediaUrl);
+    }); // foreach movie
     callback(movieInfo);
-  }); //bing image search
+  }); //callback function
 }
 
 function getMovieInfo(title,callback){
   // takes the title of a movie and returns an object containing information about it
-  url = 'http://www.omdbapi.com/?t=' + title + '&r=json';
+  url = 'http://www.omdbapi.com/?t=' + title + '&tomatoes=true&r=json';
   request(url, function (error, response, body) {
     if (!error && response.statusCode === 200) {
       movieInfo = JSON.parse(body);
@@ -40,10 +43,12 @@ function getMovieInfo(title,callback){
   }); //movie info request
 };
 
+
+
 router.get('/:movie?', function(req, res) {
 
   if(req.path === '/'){
-    res.render('movies', {movieInfo :'Homepage'});
+    res.render('movies-home', {movieInfo :'Homepage'});
   } else {
 
     movie = req.params.movie;

@@ -1,11 +1,24 @@
 extends layout
 
 block content
-  .container-fluid
-    img.background(src= movieInfo.Image)
-
+  .container-fluid.carousel
+    .carousel-item
+      img(src = movieInfo.Image[0])
+    .carousel-item
+      img(src = movieInfo.Image[1])
+    .carousel-item
+      img(src = movieInfo.Image[2])
+    .carousel-item
+      img(src = movieInfo.Image[3])
   h1 #{movieInfo.Title}
   p #{movieInfo.Plot}
+
+  .ratings
+    p.imdb.rating  IMDB Rating: #{movieInfo.imdbRating}
+    p.metascore.rating MetaScore: #{movieInfo.MetaScore}
+    p.tomatoes-user.rating Rotten Tomatoes User Rating: #{movieInfo.tomatoUserRating}
+    p.tomatoes-critic.rating Rotten Tomatoes Critic Rating: #{movieInfo.tomatoUserReviews}
+
 
 
   form(action = '/movies/' method= 'POST')
