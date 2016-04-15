@@ -1,23 +1,31 @@
-var slickSettings = {
+$('.carousel').slick({
   autoplay: true,
   autoplaySpeed: 6000,
   arrows: false,
   dots: true
-}
-
-$('#search').on('keyup', function(e){
-  if(e.keyCode === 13){
-    var parameters = {search: $(this).val()};
-    console.log(parameters);
-  };
 });
 
-$('.carousel-item img').on('error',function(){
-  console.log($(this).parent().attr('data-slick-index'));
-  $('.carousel').slick('slickRemove', $(this).parent().attr('data-slick-index'));
-
-
+$('.tomatoes').click(function() {
+  $('#rotten-tomatoes').slideToggle();
+  $('html, body').animate({
+    scrollTop: $('#rotten-tomatoes').offset().top
+  }, 2000);
+  if(!$('.ct-series').children().eq(2).hasClass('coloured')){
+    $('.ct-series').children().eq(2).css('stroke', '#00C957').addClass('coloured');
+    $('.ct-series').children().eq(3).css('stroke', 'crimson').addClass('coloured');
+  } else {
+    $('.ct-series').children().removeClass('coloured').removeAttr('style');
+  }
 
 });
 
-$('.carousel').slick(slickSettings);
+$('.carousel-item img').each(function(){
+  if($(this)[0].naturalWidth === 0){
+    $('.carousel').slick('slickRemove', $(this).parent().attr('data-slick-index'));
+  }
+});
+
+$(document).ready(function() {
+  $('#rotten-tomatoes').hide();
+});
+

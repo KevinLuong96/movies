@@ -4,10 +4,8 @@ var request = require('request');
 var bodyParser = require('body-parser');
 var router = express.Router();
 var bing = require('node-bing-api')({ accKey: 'hP4kNCbLCTBmE1FnzDozKj2m9mFgOosKUcXS6lKAznE' });
-
 //variable declarations
 var app = express();
-// var Future = Sync.Future();
 var movie, url;
 var movieInfo= {};
 
@@ -52,11 +50,6 @@ router.get('/:movie?', function(req, res) {
   } else {
 
     movie = req.params.movie;
-
-    // getMovieInfo(movie, function(data){
-    //   console.log(data);
-    // });
-
     getMovieInfo(movie, function(data){
       getMovieImage(data, function(info){
         res.render('movies', {movieInfo: info});
@@ -69,5 +62,6 @@ router.get('/:movie?', function(req, res) {
 router.post('/', function(req, res){
   res.redirect('/movies/' + req.body.titleName);
 });
+
 
 module.exports = router;
