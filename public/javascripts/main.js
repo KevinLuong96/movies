@@ -1,5 +1,6 @@
+'use strict';
 $('.tomatoes').click(function() {
-  // display legend and colour graph appropraitely
+  // display legend and colour graph appropriately
   $('#rotten-tomatoes').slideToggle();
   $('html, body').animate({
     //scroll to bottom of element when displayed

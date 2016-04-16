@@ -1,3 +1,15 @@
+/* Search  */
+
+input[type='submit']{
+  font-size: 1.5em;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: block;
+  margin: 0px auto 10px auto;
+}
+
 .search{
   width: 80%;
   margin: 15px 10%;
@@ -11,34 +23,30 @@
   height: 100%;
 }
 
-input[type='submit']{
-  font-size: 1.5em;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 5px 10px;
-  display: block;
-  margin: 0px auto;
-}
-
+/* Main Content  */
 
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #FFFFFF ;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
 }
 
-.background{
-  width:100%;
+a {
+  color: #00B7FF;
 }
 
 h1{
   margin:0;
   font-weight: 400;
 }
-a {
-  color: #00B7FF;
+
+h2{
+  text-align: center;
+}
+
+
+/* Carousel  */
+.background{
+  width:100%;
 }
 
 .carousel{
@@ -61,6 +69,13 @@ a {
   font-size: 25px;
 } 
 
+
+/* Graph */
+
+.description{
+  text-align: center;
+}
+
 .ct-series-a .ct-bar{
   stroke: blue;
   stroke-width: 15px;
@@ -69,10 +84,6 @@ a {
 
 .ct-label{
   font-size: 1em;
-}
-
-.description{
-  text-align: center;
 }
 
 #legend{
@@ -87,6 +98,7 @@ a {
 #legend p,
 #rotten-tomatoes p{
   width: 20%;
+  padding-top: 5px;
 }
 
 .user,
@@ -102,9 +114,11 @@ a {
 }
 
 .tomatoes{
-  padding: 15px;
+  padding: 5px;
   padding-top: 0;
   text-decoration: underline;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 #rotten-tomatoes{
@@ -113,6 +127,9 @@ a {
   justify-content: flex-end;
   margin-right: 15px;
 }
+
+
+/* Media Queries  */
 
 @media(min-width: 35em){
   .carousel{

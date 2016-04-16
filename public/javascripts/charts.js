@@ -1,3 +1,4 @@
+'use strict';
 //Create an object to hold labels and ratings for the chart
 var data = {
   labels: ['Metascore', 'Imdb Rating', 'Tomato Rating', 'Tomato User Rating'],
@@ -39,8 +40,6 @@ ratings.forEach(function(rating){
 //imdb score is /10 instead of /100. Multiply it by 10
 data.series[0][1] *= 10;
 
-
-//Functions
 
 //Jquery
 $(document).ready(function() {

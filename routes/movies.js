@@ -1,3 +1,4 @@
+'use strict';
 //NodeJS modules
 var express = require('express');
 var request = require('request');
@@ -39,7 +40,7 @@ function getMovieInfo(title,callback){
       callback(movie);
     }
   }); //movie info request
-};
+}
 
 
 
