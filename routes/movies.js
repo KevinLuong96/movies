@@ -40,7 +40,11 @@ function getMovieInfo(title,callback){
   url = 'http://www.omdbapi.com/?t=' + title + '&tomatoes=true&r=json';
   request(url, function (error, response, body) {
     if (!error && response.statusCode === 200) {
-      movieInfo = JSON.parse(body);
+      try{
+        movieInfo = JSON.parse(body);
+      } catch(e){
+        return console.error(e);
+      }
       callback(movie);
     } else if( error ){
       throw error;
