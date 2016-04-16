@@ -2,7 +2,8 @@ $('.carousel').slick({
   autoplay: true,
   autoplaySpeed: 6000,
   arrows: false,
-  dots: true
+  dots: true,
+  // infinite: false
 });
 
 $('.tomatoes').click(function() {
@@ -19,7 +20,7 @@ $('.tomatoes').click(function() {
 
 });
 
-$('.carousel-item img').each(function(){
+$('.carousel-item img').not('.slick-cloned').each(function(){
   if($(this)[0].naturalWidth === 0){
     $('.carousel').slick('slickRemove', $(this).parent().attr('data-slick-index'));
   }
