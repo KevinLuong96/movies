@@ -23,11 +23,15 @@ function getMovieImage(title, callback){
       aspect: 'wide'
     },
     face: 'other'
-  }, function(error, res, body){
-    body.d.results.forEach(function(movie){
-      movieInfo.Image.push(movie.MediaUrl);
-    }); // foreach movie
-    callback(movieInfo);
+  }, function(err, res, body){
+    if(err){ 
+      throw err;
+    } else{
+      body.d.results.forEach(function(movie){
+        movieInfo.Image.push(movie.MediaUrl);
+      }); // foreach movie
+      callback(movieInfo);
+    } 
   }); //callback function
 }
 
@@ -38,6 +42,8 @@ function getMovieInfo(title,callback){
     if (!error && response.statusCode === 200) {
       movieInfo = JSON.parse(body);
       callback(movie);
+    } else if( error ){
+      throw error;
     }
   }); //movie info request
 }
@@ -45,7 +51,7 @@ function getMovieInfo(title,callback){
 
 
 router.get('/:movie?', function(req, res) {
-
+  //direct to home path or movie path, call render in movie info and text if movie
   if(req.path === '/'){
     res.render('movies-home', {movieInfo :'Homepage'});
   } else {
@@ -59,6 +65,7 @@ router.get('/:movie?', function(req, res) {
   }
 
 });
+
 
 router.post('/', function(req, res){
   res.redirect('/movies/' + req.body.titleName);
