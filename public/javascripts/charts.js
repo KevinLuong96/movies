@@ -7,6 +7,7 @@ var data = {
 
 //Chartist variables
 var options = {
+  high: 100,
   seriesBarDistance: 15,
   height: window.innerHeight * 0.6
 };
@@ -33,18 +34,25 @@ var responsiveOptions = [
 
 //hold the names of the relevant movieInfo properties
 var ratings = ['Metascore', 'imdbRating', 'tomatoMeter', 'tomatoUserMeter'];
-//iterate through the array and push it to the chart data object
-ratings.forEach(function(rating){
-  data.series[0].push(movieInfo[rating]);
-});
-//imdb score is /10 instead of /100. Multiply it by 10
-data.series[0][1] *= 10;
-
+if(!movieInfo.Error){
+  // if movie is found in the database
+  ratings.forEach(function(rating){
+  //iterate through the array and push it to the chart data object
+    data.series[0].push(movieInfo[rating]);
+  });
+  //imdb score is /10 instead of /100. Multiply it by 10
+  data.series[0][1] *= 10;
+}
 
 //Jquery
 $(document).ready(function() {
   //create the bar graph
-  new Chartist.Bar('.chart', data, options, responsiveOptions);
+  if(movieInfo.Type !== 'movie'){
+    $('.chart').prev().hide();
+    $('.chart').next().hide();
+  } else{
+    new Chartist.Bar('.chart', data, options, responsiveOptions);
+  }
 });
 
 

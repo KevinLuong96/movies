@@ -35,7 +35,9 @@ $(document).ready(function() {
   arrows: false,
   dots: true,
   });
-
-
+  if(movieInfo.Type !== 'movie'){
+    $('.description').children().hide();
+    $('.description').append('<h1>Movie not found<h2>');
+  }
 });
 

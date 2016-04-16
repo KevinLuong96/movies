@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 function getMovieImage(title, callback){
-  // takes the title of a movie, searches the bing api for   related image
+  // takes the title of a movie, searches the bing api for related image
   // and adds it to an object holding movie info
   movieInfo.Image = [];
   bing.images(title + ' movie', {
