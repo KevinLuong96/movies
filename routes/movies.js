@@ -57,14 +57,19 @@ function getMovieInfo(title,callback){
 router.get('/:movie?', function(req, res) {
   //direct to home path or movie path, call render in movie info and text if movie
   if(req.path === '/'){
-    res.render('movies-home', {movieInfo :'Homepage'});
+    res.render('movies-error', {movieInfo : movieInfo});
   } else {
 
     movie = req.params.movie;
+    // movie = movie.split('+');
     getMovieInfo(movie, function(data){
-      getMovieImage(data, function(info){
-        res.render('movies', {movieInfo: info});
-      });
+      if(movieInfo.Response === 'False'){
+        res.render('movies-error', {title : movie});
+      } else{
+        getMovieImage(data, function(info){
+          res.render('movies', {movieInfo: info});
+        });
+      } 
     });
   }
 

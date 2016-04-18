@@ -47,12 +47,7 @@ if(!movieInfo.Error){
 //Jquery
 $(document).ready(function() {
   //create the bar graph
-  if(movieInfo.Type !== 'movie'){
-    $('.chart').prev().hide();
-    $('.chart').next().hide();
-  } else{
-    new Chartist.Bar('.chart', data, options, responsiveOptions);
-  }
+  new Chartist.Bar('.chart', data, options, responsiveOptions);
 });
 
 
