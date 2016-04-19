@@ -27,16 +27,15 @@ function getMovieImage(titles, index, callback){
     },
     face: 'other'
   }, function(err, res, body){
-    // if(err){ 
-    //   throw err;
-    // } else{
+    if(err){ 
+      throw err;
+    } else{
       console.log(body.d + body['d']);
       body['d'].results.forEach(function(movie){
-        console.log('image added!' + movie.MediaUrl);
         movieImages[index].push(movie.MediaUrl);
       }); // foreach movie
       callback();
-    // } 
+    } 
   }); //callback function
 }
 
@@ -48,7 +47,6 @@ function getMovieInfo(titles, index, callback){
     if (!error && response.statusCode === 200) {
       try{
         movieInfo[index] = JSON.parse(body);
-        console.log('info added!');
       } catch(e){
         return console.error(e);
       }
@@ -70,6 +68,13 @@ router.get('/:movie?', function(req, res) {
     title = req.params.movie;
     movies = title.split('+');
 
+    movies.forEach(function(movie, index){
+      //remove leading spaces in search queries 
+      if( movie[0] === ' ' ){
+        movies[index] = movie.slice(1);
+      }
+    });
+
     //reset values to zero
     counter = 0;
     movieInfo = [];
@@ -78,7 +83,6 @@ router.get('/:movie?', function(req, res) {
     movies.forEach(function(movie, index){
       movieInfo.push({});
       movieImages.push([]);
-      console.log('pushed')
       getMovieInfo(movies, index, function(){
         if(movieInfo[index].Response === 'False'){
           res.render('movies-error', {title : movie});
