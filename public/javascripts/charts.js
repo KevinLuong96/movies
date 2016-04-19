@@ -2,7 +2,7 @@
 //Create an object to hold labels and ratings for the chart
 var data = {
   labels: ['Metascore', 'Imdb Rating', 'Tomato Rating', 'Tomato User Rating'],
-  series: [[]]
+  series: []
 };
 
 //Chartist variables
@@ -34,15 +34,19 @@ var responsiveOptions = [
 
 //hold the names of the relevant movieInfo properties
 var ratings = ['Metascore', 'imdbRating', 'tomatoMeter', 'tomatoUserMeter'];
-if(!movieInfo.Error){
-  // if movie is found in the database
+
+movieInfo.forEach(function(movie, index){
+  console.log(index);
+  data.series.push({});
+  data.series[index].name = movieInfo[index].Title;
+  data.series[index].data = [];
   ratings.forEach(function(rating){
   //iterate through the array and push it to the chart data object
-    data.series[0].push(movieInfo[rating]);
+    data.series[index].data.push(parseInt(movieInfo[index][rating]));
   });
   //imdb score is /10 instead of /100. Multiply it by 10
-  data.series[0][1] *= 10;
-}
+  data.series[index].data[1] *= 10;
+});//movieinfo for each
 
 //Jquery
 $(document).ready(function() {

@@ -1,8 +1,7 @@
 extends layout
 
 block content
-  each val, index in images
-    h1 index
+  for val, index in images
     .container-fluid.carousel
       .carousel-item
         img(src = images[index][0])
@@ -37,4 +36,4 @@ block content
     name ='titleName')
     input.button(type='submit')
 
-  script(type='text/javascript') var movieInfo =!{JSON.stringify(movieInfo[0])}; 
+  script(type='text/javascript') var movieInfo =!{JSON.stringify(movieInfo)}; 
