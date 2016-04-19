@@ -1,19 +1,21 @@
 extends layout
 
 block content
-  .container-fluid.carousel
-    .carousel-item
-      img(src = movieInfo.Image[0])
-    .carousel-item
-      img(src = movieInfo.Image[1])
-    .carousel-item
-      img(src = movieInfo.Image[2])
-    .carousel-item
-      img(src = movieInfo.Image[3])
+  each val, index in images
+    h1 index
+    .container-fluid.carousel
+      .carousel-item
+        img(src = images[index][0])
+      .carousel-item
+        img(src = images[index][1])
+      .carousel-item
+        img(src = images[index][2])
+      .carousel-item
+        img(src = images[index][3])
 
-  .description
-    h1 #{movieInfo.Title}
-    p #{movieInfo.Plot}
+    .description
+      h1 #{movieInfo[index].Title}
+      p #{movieInfo[index].Plot}
 
   h2 Ratings
   .chart
@@ -35,4 +37,4 @@ block content
     name ='titleName')
     input.button(type='submit')
 
-  script(type='text/javascript') var movieInfo =!{JSON.stringify(movieInfo)}; 
+  script(type='text/javascript') var movieInfo =!{JSON.stringify(movieInfo[0])}; 
