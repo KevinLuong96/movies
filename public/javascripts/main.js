@@ -6,13 +6,16 @@ $('.tomatoes').click(function() {
     //scroll to bottom of element when displayed
     scrollTop: $('#rotten-tomatoes').offset().top
   }, 2000);
-  if(!$('.ct-series').children().eq(2).hasClass('coloured')){
-    //change colour of graph bars
-    $('.ct-series').children().eq(2).css('stroke', '#00C957').addClass('coloured');
-    $('.ct-series').children().eq(3).css('stroke', 'crimson').addClass('coloured');
-  } else {
-    $('.ct-series').children().removeClass('coloured').removeAttr('style');
+  $.each($('.ct-series'), function() {
+    if(!$(this).children().eq(2).hasClass('coloured')){
+      //change colour of graph bars
+      $(this).children().eq(2).css('stroke', '#00C957').addClass('coloured');
+      $(this).children().eq(3).css('stroke', 'blue').addClass('coloured');
+    } else {
+      $(this).children().removeClass('coloured').removeAttr('style');
   }
+  });
+
 
 });
 

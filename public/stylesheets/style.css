@@ -76,9 +76,9 @@ h2{
   text-align: center;
 }
 
-.ct-series-a .ct-bar{
-  stroke: blue;
-  stroke-width: 15px;
+.ct-series .ct-bar{
+  /* stroke: blue; */
+  /* stroke-width: 15px; */
   transition: 1s;
 }
 
@@ -106,7 +106,7 @@ h2{
   border-radius: 5px;
 }
 .user{
-  border: 2px solid crimson;
+  border: 2px solid blue;
 }
 
 .critic{

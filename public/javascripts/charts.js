@@ -14,7 +14,7 @@ var options = {
 var responsiveOptions = [
   //use media queries to update the chart responsively
   ['screen and (min-width: 641px) and (max-width: 1024px)', {
-    seriesBarDistance: 10,
+    seriesBarDistance: 15,
     axisX: {
       labelInterpolationFnc: function (value) {
         return value;
