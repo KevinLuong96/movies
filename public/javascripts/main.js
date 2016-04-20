@@ -9,6 +9,8 @@ function resizeContainer(){
     //if the amount of movies to fit is greater or equal to the max number of boxes
     // that will fit, readjust the size of the container to fit
     $('.movie-container').css('width', 100 / numBoxes + '%');
+    //resize banner height to fit smaller containers better
+    $('.carousel').css('height', '65vh');
   }
 }
 
@@ -25,7 +27,9 @@ $('.tomatoes').click(function() {
       $(this).children().eq(2).css('stroke', '#00C957').addClass('coloured');
       $(this).children().eq(3).css('stroke', 'blue').addClass('coloured');
     } else {
-      $(this).children().removeClass('coloured').removeAttr('style');
+      //revert color to the same colour as other bars in graph
+      $(this).children().removeClass('coloured').css('stroke', 
+        $(this).children().eq(0).css('stroke'));
   }
   });
 });

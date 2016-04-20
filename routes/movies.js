@@ -27,15 +27,11 @@ function getMovieImage(titles, index, callback){
     },
     face: 'other'
   }, function(err, res, body){
-    if(err){ 
-      throw err;
-    } else{
       console.log(body.d + body['d']);
       body['d'].results.forEach(function(movie){
         movieImages[index].push(movie.MediaUrl);
       }); // foreach movie
       callback();
-    } 
   }); //callback function
 }
 

@@ -149,11 +149,11 @@ h2{
 
 /* Media Queries  */
 
-@media(min-width: 35em){
+/* @media(min-width: 35em){
   .carousel{
     height: 60vh;    
   }
-}
+} */
 
 @media(min-width: 50em){
   .container{

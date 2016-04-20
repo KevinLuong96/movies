@@ -1,4 +1,32 @@
 'use strict';
+//hold the bar graph colours to be used for this page
+var colours= [];
+
+function genColour(){
+  //generates a random light color (rgb values 128-256) and returns a string
+  //in 'rgb(###,###,###) form'
+  var colours = ['red','blue','green'];
+  var colorString = 'rgb(';
+  colours.forEach(function(val, index) {
+    colorString += (Math.floor(Math.random() * 128) + 128);
+    if(index !== colours.length - 1){
+      colorString += ',';
+    }
+  });
+  colorString += ')';
+  return colorString;
+}
+
+function reColour(colours){
+  // for each colour generated, set the bars and background text to that colour
+  colours.forEach(function(val, index){
+    for(var i = index * 4; i < index * 4 + 4; i ++){
+      $('.ct-bar').eq(i).css('stroke', colours[index]);
+    }
+    $('#movieNames').children().eq(index).css('background-color', colours[index]);
+  });
+}
+
 //Create an object to hold labels and ratings for the chart
 var data = {
   labels: ['Metascore', 'Imdb Rating', 'Tomato Rating', 'Tomato User Rating'],
@@ -51,14 +79,23 @@ movieInfo.forEach(function(movie, index){
 $(document).ready(function() {
   //create the bar graph
   new Chartist.Bar('.chart', data, options, responsiveOptions);
+  //reset the colours array
+  colours = [];
+  //for each movie, create a colour and push it to the colour array used
+  //to recolour the bars for that movie
+  $('.movie-container').each(function() {
+    colours.push(genColour());
+  });
+}); 
+
+
+$('.chart').bind('DOMNodeInserted', function() {
+  //when the chart is drawn or redrawn, recolour it to the new colours
+  if($('.ct-bar').eq(movieInfo.length * 4 - 1).length === 1){
+    //when the last bar is added to the graph, recolour all of the lines
+    reColour(colours);
+  }
 });
 
-$(window).on('load',function() {
-  $.each($('#movieNames').children(), function(index) {
-    console.log($(this));
-    console.log($('.ct-bar').eq( index * 4 ).css('stroke'));
-    $(this).css('background-color', $('.ct-bar').eq( index * 4 ).css('stroke'));
-  });
-});
 
 
