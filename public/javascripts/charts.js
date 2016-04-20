@@ -19,17 +19,28 @@ function genColour(){
 
 function reColour(colours){
   // for each colour generated, set the bars and background text to that colour
-  colours.forEach(function(val, index){
-    for(var i = index * 4; i < index * 4 + 4; i ++){
-      $('.ct-bar').eq(i).css('stroke', colours[index]);
-    }
+  var counter = 0;
+  data.series.forEach(function(val, index){
+    data.labels.forEach(function(){
+      //for each rating held in the data array change the colour of the 
+      //respective bar to the preset colour
+      $('.ct-bar').eq(counter).css('stroke', colours[index]);
+      counter++;
+    });
+    //change text label to background colour
     $('#movieNames').children().eq(index).css('background-color', colours[index]);
   });
+  // colours.forEach(function(val, index){
+  //   for(var i = index * 4; i < index * 4 + 4; i ++){
+  //     $('.ct-bar').eq(i).css('stroke', colours[index]);
+  //   }
+
+  // });
 }
 
 //Create an object to hold labels and ratings for the chart
 var data = {
-  labels: ['Metascore', 'Imdb Rating', 'Tomato Rating', 'Tomato User Rating'],
+  labels: ['Metascore', 'Imdb Rating', 'Tomato Critic Rating', 'Tomato User Rating'],
   series: []
 };
 
@@ -91,7 +102,7 @@ $(document).ready(function() {
 
 $('.chart').bind('DOMNodeInserted', function() {
   //when the chart is drawn or redrawn, recolour it to the new colours
-  if($('.ct-bar').eq(movieInfo.length * 4 - 1).length === 1){
+  if($('.ct-bar').eq(0).length === 1){
     //when the last bar is added to the graph, recolour all of the lines
     reColour(colours);
   }
