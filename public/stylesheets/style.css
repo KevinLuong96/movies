@@ -43,7 +43,14 @@ h2{
   text-align: center;
 }
 
+.movies{
+  display: flex;
+  flex-wrap: wrap;
+}
 
+.movie-container{
+  width: 100%;
+}
 /* Carousel  */
 .background{
   width:100%;
@@ -72,6 +79,10 @@ h2{
 
 /* Graph */
 
+.container{
+  width: 100%;
+}
+
 .description{
   text-align: center;
 }
@@ -84,6 +95,13 @@ h2{
 
 .ct-label{
   font-size: 1em;
+}
+
+#movieNames{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  text-align: center;
 }
 
 #legend{
@@ -138,6 +156,21 @@ h2{
 }
 
 @media(min-width: 50em){
+  .container{
+    display: flex;
+  }
+
+  .carousel{
+    width: 100%;
+  }
+  #movieNames{
+    width: 18%;
+    flex-direction: column;
+  }
+  .chart{
+    width: 80%;
+    margin-left: 10px;
+  }
   .carousel{
     height: 85vh;
   }

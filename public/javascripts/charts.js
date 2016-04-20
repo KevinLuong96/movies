@@ -22,7 +22,7 @@ var responsiveOptions = [
     }
   }],
   ['screen and (max-width: 640px)', {
-    seriesBarDistance: 5,
+    seriesBarDistance: 10,
     axisX: {
       labelInterpolationFnc: function (value) {
         return value[0];
@@ -36,7 +36,6 @@ var responsiveOptions = [
 var ratings = ['Metascore', 'imdbRating', 'tomatoMeter', 'tomatoUserMeter'];
 
 movieInfo.forEach(function(movie, index){
-  console.log(index);
   data.series.push({});
   data.series[index].name = movieInfo[index].Title;
   data.series[index].data = [];
@@ -54,6 +53,12 @@ $(document).ready(function() {
   new Chartist.Bar('.chart', data, options, responsiveOptions);
 });
 
-
+$(window).on('load',function() {
+  $.each($('#movieNames').children(), function(index) {
+    console.log($(this));
+    console.log($('.ct-bar').eq( index * 4 ).css('stroke'));
+    $(this).css('background-color', $('.ct-bar').eq( index * 4 ).css('stroke'));
+  });
+});
 
 

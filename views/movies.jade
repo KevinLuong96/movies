@@ -1,28 +1,29 @@
 extends layout
 
 block content
-  for val, index in images
-    .container-fluid.carousel
-      .carousel-item
-        img(src = images[index][0])
-      .carousel-item
-        img(src = images[index][1])
-      .carousel-item
-        img(src = images[index][2])
-      .carousel-item
-        img(src = images[index][3])
+  .movies
+    for val, index in images
+      .movie-container
+        .carousel
+          .carousel-item
+            img(src = images[index][0])
+          .carousel-item
+            img(src = images[index][1])
+          .carousel-item
+            img(src = images[index][2])
+          .carousel-item
+            img(src = images[index][3])
 
-    .description
-      h1 #{movieInfo[index].Title}
-      p #{movieInfo[index].Plot}
+        .description
+          h1 #{movieInfo[index].Title}
+          p #{movieInfo[index].Plot}
 
   h2 Ratings
-  .chart
-  //- .ratings
-  //-   p.imdb.rating  IMDB Rating: #{movieInfo.imdbRating}
-  //-   p.metascore.rating MetaScore: #{movieInfo.Metascore}
-  //-   p.tomatoes-user.rating Rotten Tomatoes User Rating: #{movieInfo.tomatoUserRating}
-  //-   p.tomatoes-critic.rating Rotten Tomatoes Critic Rating: #{movieInfo.tomatoRating}
+  .container
+    .chart
+    #movieNames
+      for val, index in movieInfo
+        p #{movieInfo[index].Title}
   #legend
     p <strong>M</strong>etaScore
     p <strong>I</strong>mdb
