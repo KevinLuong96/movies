@@ -4,9 +4,11 @@ block content
 
   if title
     .error
-      h1 #{title} not found!
+      h1 #{title} was not found!
+
+  h1.help Graph the ratings of your favourite movies. 
+    | Compare multiple movies by separating them with a +.
 
   form(action = '/movies/' method= 'POST')
-    input.search(type='text' placeholder="Search for movies by title." 
+    input.search(type='text' placeholder='Example: Finding Nemo'
     name ='titleName')
-    input.button(type='submit')
