@@ -19,7 +19,6 @@ app.use(bodyParser.json());
 function getMovieImage(titles, index, callback){
   // takes the title of a movie, searches the bing api for related image
   // and adds it to an object holding movie info
-  console.log('started');
   bing.images(titles[index] + ' movie', {
     top: 4,
     imageFilters: {
@@ -27,11 +26,14 @@ function getMovieImage(titles, index, callback){
     },
     face: 'other'
   }, function(err, res, body){
-      console.log(body.d + body['d']);
-      body['d'].results.forEach(function(movie){
-        movieImages[index].push(movie.MediaUrl);
-      }); // foreach movie
-      callback();
+      if(err){
+        throw err;
+      } else{
+        body.d.results.forEach(function(movie){
+          movieImages[index].push(movie.MediaUrl);
+        }); // foreach movie
+        callback();
+      } 
   }); //callback function
 }
 
@@ -81,7 +83,7 @@ router.get('/:movie?', function(req, res) {
       movieImages.push([]);
       getMovieInfo(movies, index, function(){
         if(movieInfo[index].Response === 'False'){
-          res.render('movies-error', {title : movie});
+          res.render('movies-home', {title : movie, info: movieInfo});
         } else{
             counter++;
             if(counter === ( movies.length * 2 )){
