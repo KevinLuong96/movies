@@ -1,0 +1,30 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+/* Navigation bar */
+.nav-bar{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.nav-bar li{
+  font-size: 1.25em;
+  padding: 5px;
+}
+
+.nav-bar li a{
+  padding: 10px;
+  color: black;
+
+}
+
+/* Media Queries */
+@media(min-width: 25em){
+  .nav-bar{
+    flex-direction: row-reverse;
+
+  }
+}

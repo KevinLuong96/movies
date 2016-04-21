@@ -83,7 +83,7 @@ router.get('/:movie?', function(req, res) {
       movieImages.push([]);
       getMovieInfo(movies, index, function(){
         if(movieInfo[index].Response === 'False'){
-          res.render('movies-home', {title : movie, info: movieInfo});
+          res.render('movies-home', {title : movie, movieInfo: movieInfo});
         } else{
             counter++;
             if(counter === ( movies.length * 2 )){
