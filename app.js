@@ -2,15 +2,18 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
+var http = require('http');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var routes = require('./routes/index');
 var about = require('./routes/about');
 var movies = require('./routes/movies');
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 var app = express();
+
 
 // view engine setup 
 app.set('views', path.join(__dirname, 'views'));
@@ -59,6 +62,9 @@ app.use(function(err, req, res, next) {
   });
 });
 
+http.createServer(app).listen(app.get('server_port', server_ip_address, function () {
+  console.log( "Listening on " + server_ip_address + ", server_port " + server_port )
+});
 
 
 module.exports = app;
