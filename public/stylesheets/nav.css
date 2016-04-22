@@ -4,10 +4,12 @@ body {
 }
 
 /* Navigation bar */
+
 .nav-bar{
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   text-align: center;
+  background-color: #FFFFFF;
 }
 
 .nav-bar li{
@@ -17,14 +19,18 @@ body {
 
 .nav-bar li a{
   padding: 10px;
-  color: black;
-
+  text-decoration: none;
 }
 
 /* Media Queries */
 @media(min-width: 25em){
   .nav-bar{
     flex-direction: row-reverse;
+    transition: 1s;
+  }
 
+  .left{
+    margin-right: auto;
+    margin-left: 10px;
   }
 }

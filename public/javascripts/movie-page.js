@@ -8,7 +8,10 @@ function resizeContainer(){
   if(numBoxes >= 1 && $('.movie-container').length >= numBoxes){
     //if the amount of movies to fit is greater or equal to the max number of boxes
     // that will fit, readjust the size of the container to fit
-    $('.movie-container').css('width', 100 / numBoxes + '%');
+    $('.movie-container').css({
+      width:  100 / numBoxes + '%',
+      flex: 'auto'
+    });
     //resize banner height to fit smaller containers better
     $('.carousel').css('height', '65vh');
   }

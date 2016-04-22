@@ -1,20 +1,10 @@
 /* Search  */
 
-input[type='submit']{
-  font-size: 1.5em;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 5px 10px;
-  display: block;
-  margin: 0px auto 10px auto;
-}
-
 .search{
   width: 80%;
   margin: 15px 10%;
   color: black;
-  font-size: 2em;
+  font-size: 1.5em;
   text-align: center;
 }
 
@@ -30,14 +20,11 @@ body {
   font-weight: 300;
 }
 
-a {
-  color: #00B7FF;
-}
-
 h1{
   margin:0;
   font-weight: 400;
 }
+
 
 h2{
   text-align: center;
@@ -50,6 +37,30 @@ h2{
 
 .movie-container{
   width: 100%;
+}
+
+.error{
+  text-align: center;
+  background-color: #ff6666;
+  padding: 10px;
+}
+
+.help{
+  text-align: center;
+  padding: 2px 15px;
+  font-size: 1.5em;
+}
+
+#title{
+  text-align: center;
+  margin: 35px;
+  font-size: 3.5em;
+}
+
+.coloured,
+.coloured a{
+  /* a tag is necessary to override text color when link has been clicked */
+  color: #89bdd3;
 }
 /* Carousel  */
 .background{
@@ -85,11 +96,10 @@ h2{
 
 .description{
   text-align: center;
+  margin: 10px;
 }
 
 .ct-series .ct-bar{
-  /* stroke: blue; */
-  /* stroke-width: 15px; */
   transition: 1s;
 }
 
@@ -149,15 +159,14 @@ h2{
 
 /* Media Queries  */
 
-/* @media(min-width: 35em){
-  .carousel{
-    height: 60vh;    
-  }
-} */
-
 @media(min-width: 50em){
   .container{
     display: flex;
+  }
+
+  .help,
+  .search{
+    font-size: 2em;
   }
 
   .carousel{
