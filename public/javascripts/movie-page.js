@@ -40,7 +40,8 @@ $(window).on('load', function(){
   //no errors (403) have occured and remove if width is 0
   $('.carousel-item img').each(function(){
     if(!$(this).parent().hasClass('slick-cloned') && $(this).context.naturalWidth === 0){
-      $('.carousel').slick('slickRemove', $(this).parent().attr('data-slick-index'));
+      //travel to the parent carousel element and remove the faulty image
+      $(this).parents('.carousel').slick('slickRemove', $(this).parent().attr('data-slick-index'));
     }
   });
   //adjust size of movie containers when window is finished loading
