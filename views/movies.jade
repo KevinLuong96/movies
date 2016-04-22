@@ -1,6 +1,7 @@
 extends layout
 
 block content
+
   .movies
     for val, index in images
       .movie-container
@@ -36,4 +37,6 @@ block content
     input.search(type='text' placeholder="Search for movies by title." 
     name ='titleName')
 
+  include ../partials/_footer.jade
   script(type='text/javascript') var movieInfo =!{JSON.stringify(movieInfo)}; 
+  include ../partials/_movie.jade
