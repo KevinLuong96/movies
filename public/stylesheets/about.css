@@ -1,0 +1,47 @@
+.main-content{
+  width: 90%;
+  margin: auto;
+}
+
+.main-content h1{
+  font-size: 1.75em;
+  margin: 15px 0 5px 0;
+}
+
+.main-content p,
+.website p{
+  margin: 0;
+  display: inline;
+}
+
+.main-content a,
+.website a{
+  font-size: 1em;
+}
+
+.website{
+  display: block;
+  margin: 15px;
+}
+
+
+@media(min-width: 35em){
+  .main-content{
+    width: 80%;
+  }
+
+  .website{
+    margin: 15px 0;
+  }
+
+  .main-content h1{
+    margin: 20px 0 5px 0;
+  }
+
+  .main-content p,
+  .main-content a,
+  .website p,
+  .website a{
+    font-size: 1.25em;
+  }
+}

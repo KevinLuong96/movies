@@ -1,6 +1,35 @@
 extends layout
 
 block content
-  h1 What is GraphCat
+  .main-content
+    h1 What is GraphCat?
+    p.
+      GraphCat is a tool used to get data about movies, graph their ratings off
+      of multiple sites, and compare these ratings with other movies. GraphCat is 
+      heavily inspired by 
+    a(href='http://graphtv.kevinformatics.com' rel='canonical') GraphTv
+    p.
+      &nbsp; created by Kevin Wu and was created as a movie counterpart to 
+      GraphTv.
+
+    h1 How does it work?
+    p.
+      GraphCat is powered by the Express web framework and uses omdbApi
+      and bing images to retrieve the information and images for the movies, the 
+      ratings are then plotted with the Chartist plugin.
+
+    h1 ...GraphCat?
+    p.
+      Cats are great!
+
+
+    .website
+      p.
+        You can find some more of my projects and contact me at my 
+      a(href='http://www.kevinluong.xyz') website
+      p . Send me an email! I would love to hear from you.
+
+
 
   include ../partials/_footer.jade
+
