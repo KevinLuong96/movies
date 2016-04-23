@@ -2,7 +2,6 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
-var http = require('http');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -62,7 +61,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-http.createServer(app).listen(app.get('server_port', server_ip_address, function () {
+app.listen(server_port, server_ip_address, function () {
   console.log( "Listening on " + server_ip_address + ", server_port " + server_port )
 });
 
