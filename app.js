@@ -62,11 +62,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(server_port, server_ip_address, function () {
-<<<<<<< HEAD
-  console.log( "Listening on " + server_ip_address + ", server_port " + server_port )
-=======
-  console.log( "Listening on " + server_ip_address + ", server_port " + port )
->>>>>>> a9436bd4b4bb713e6c9bd61cb3fff45768a4d437
+  console.log( "Listening on " + server_ip_address + ", server_port " + server_port );
 });
 
 

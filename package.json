@@ -3,11 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-<<<<<<< HEAD
-    "start": "node ./bin/www"
-=======
+    "start": "node ./bin/www",
     "start": "node app.js"
->>>>>>> a9436bd4b4bb713e6c9bd61cb3fff45768a4d437
   },
   "dependencies": {
     "body-parser": "^1.13.3",
@@ -26,10 +23,6 @@
     "gulp-concat": "^2.6.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.5.3"
-<<<<<<< HEAD
   },
   "main": "app.js"
-=======
-  }
->>>>>>> a9436bd4b4bb713e6c9bd61cb3fff45768a4d437
 }
